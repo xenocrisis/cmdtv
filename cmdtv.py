@@ -9,6 +9,7 @@ from art import *
 
 # Path del video
 print('[!]Debes meter el video en formato mp4 a poder ser en la misma carpeta que el script.')
+
 vidcap = cv2.VideoCapture(input('[?]Nombre del archivo: '))
 success, image = vidcap.read()
 
@@ -17,6 +18,9 @@ animation = "|/-\\"
 idx = 0
 
 try:
+  # Borrar los archivos antes de meter nuevos frames
+  os.system('del /Q frames')
+
   while success:
     cv2.imwrite("frames/frame%d.jpg" % count, image)    
     success,image = vidcap.read()
@@ -32,7 +36,7 @@ try:
 
   n = 0
 
-  input('[?]Delay entre frames (Recomiendo entre 1 y 0.01): ')
+  delay = input('[?]Delay entre frames (Recomiendo entre 1 y 0.01): ')
   
   while n < count:
     # delay per frame
@@ -52,7 +56,7 @@ try:
     pixels = img.getdata()
 
     # chars para sustituir
-    chars = ["·", ",", "-", "=", "O", "%", "&", "/", "Q", "B", "$", "#"]
+    chars = ["·", ",", "-", "=", "o", "%", "&", "/", "0", "|", "$", "#"]
     new_pixels = [chars[pixel//25] for pixel in pixels]
     new_pixels = ''.join(new_pixels)
     new_pixels_count = len(new_pixels)
