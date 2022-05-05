@@ -72,4 +72,5 @@ try:
     n = n + 1
 except:
   print('[-]Algo no esperado ocurrió :(')
+  print('[!]Crea la carpeta ./frames/ si no existe.')
     
