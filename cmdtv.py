@@ -8,9 +8,9 @@ import base64
 from art import *
 
 # Path del video
-print('[!]Debes meter el video en formato mp4 a poder ser en la misma carpeta que el script.')
+print('[!]El video debe estar en la misma carpeta que este script.')
 
-vidcap = cv2.VideoCapture(input('[?]Nombre del archivo: '))
+vidcap = cv2.VideoCapture(input('[?]: '))
 success, image = vidcap.read()
 
 count = 0
@@ -22,6 +22,7 @@ try:
   os.system('del /Q frames')
 
   while success:
+    os.system('cls')
     cv2.imwrite("frames/frame%d.jpg" % count, image)    
     success,image = vidcap.read()
     print('[+]Procesando video, frame ', count)
